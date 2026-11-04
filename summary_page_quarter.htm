@@ -1,0 +1,1616 @@
+<div tabindex="0" id="htmlContent" class="hc-legacy-v1">
+    <div class="htmlViewerEntry">
+        <div>
+
+
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Análise Trimestral com Storytelling - Q3 2025</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <style>
+                :root {
+                    --primary: #3b82f6;
+                    --secondary: #8b5cf6;
+                    --success: #10b981;
+                    --warning: #f59e0b;
+                    --danger: #ef4444;
+                    --dark-bg: #0f172a;
+                    --card-bg: #1e293b;
+                    --card-border: #334155;
+                    --text-primary: #f1f5f9;
+                    --text-secondary: #94a3b8;
+                    --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+                    --gradient-2: linear-gradient(135deg, #10b981, #3b82f6);
+                    --gradient-3: linear-gradient(135deg, #f59e0b, #ef4444);
+                    --gradient-4: linear-gradient(135deg, #8b5cf6, #ec4899);
+                }
+
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+                }
+
+                body {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                    padding: 20px;
+                    background-image:
+                        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 25%),
+                        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 25%);
+                }
+
+                .dashboard-container {
+                    width: 1300px;
+                    height: 900px;
+                    background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 100%);
+                    border-radius: 24px;
+                    box-shadow:
+                        0 30px 60px rgba(0, 0, 0, 0.8),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                    position: relative;
+                    overflow: hidden;
+                    padding: 25px;
+                }
+
+                /* Efeito de partículas de fundo */
+                .dashboard-container::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-image:
+                        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
+                    pointer-events: none;
+                }
+
+                /* Cabeçalho com foco em narrativa */
+                .dashboard-header {
+                    margin-bottom: 25px;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .header-main {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    margin-bottom: 20px;
+                }
+
+                .quarter-badge {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    background: var(--gradient-1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 28px;
+                    font-weight: 800;
+                    color: white;
+                    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+                    position: relative;
+                }
+
+                .quarter-badge::after {
+                    content: '2025';
+                    position: absolute;
+                    bottom: -20px;
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: var(--text-secondary);
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .header-info h1 {
+                    color: var(--text-primary);
+                    font-size: 32px;
+                    font-weight: 800;
+                    margin-bottom: 8px;
+                    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                }
+
+                .header-info p {
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    max-width: 1000px;
+                    line-height: 1.5;
+                }
+
+                /* Estatísticas do cabeçalho */
+                .header-stats {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 15px;
+                    margin-top: 25px;
+                }
+
+                .stat-card {
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: 16px;
+                    padding: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    transition: all 0.3s ease;
+                }
+
+                .stat-card:hover {
+                    background: rgba(255, 255, 255, 0.05);
+                    transform: translateY(-5px);
+                }
+
+                .stat-value {
+                    font-size: 28px;
+                    font-weight: 800;
+                    margin-bottom: 8px;
+                    background: var(--stat-gradient);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .stat-label {
+                    font-size: 13px;
+                    color: var(--text-secondary);
+                    text-transform: uppercase;
+                    letter-spacing: 0.8px;
+                }
+
+                .stat-trend {
+                    font-size: 12px;
+                    padding: 4px 10px;
+                    border-radius: 12px;
+                    background: rgba(16, 185, 129, 0.15);
+                    color: #10b981;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 4px;
+                    margin-left: 10px;
+                }
+
+                /* Container da tabela */
+                .table-wrapper {
+                    background: rgba(255, 255, 255, 0.02);
+                    border-radius: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    overflow: hidden;
+                    margin-top: 30px;
+                    height: 620px;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                /* Cabeçalho da tabela fixo */
+                .table-header-fixed {
+                    background: rgba(30, 41, 59, 0.95);
+                    backdrop-filter: blur(10px);
+                    position: sticky;
+                    top: 0;
+                    z-index: 100;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    padding: 20px 25px;
+                }
+
+                .table-title {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 15px;
+                }
+
+                .table-title h2 {
+                    color: var(--text-primary);
+                    font-size: 24px;
+                    font-weight: 700;
+                }
+
+                .table-subtitle {
+                    color: var(--text-secondary);
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .table-legend {
+                    display: flex;
+                    gap: 20px;
+                    margin-top: 15px;
+                }
+
+                .legend-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 12px;
+                    color: var(--text-secondary);
+                }
+
+                .legend-color {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 3px;
+                }
+
+                /* Container com scroll */
+                .table-container {
+                    height: 520px;
+                    overflow-y: auto;
+                    position: relative;
+                }
+
+                /* Estilização da scrollbar */
+                .table-container::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                .table-container::-webkit-scrollbar-track {
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: 4px;
+                }
+
+                .table-container::-webkit-scrollbar-thumb {
+                    background: rgba(59, 130, 246, 0.3);
+                    border-radius: 4px;
+                }
+
+                .table-container::-webkit-scrollbar-thumb:hover {
+                    background: rgba(59, 130, 246, 0.5);
+                }
+
+                /* Tabela principal */
+                .forecast-table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                }
+
+                .forecast-table thead {
+                    position: sticky;
+                    top: 0;
+                    z-index: 50;
+                }
+
+                .forecast-table th {
+                    padding: 18px 16px;
+                    text-align: left;
+                    color: var(--text-secondary);
+                    font-size: 13px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.8px;
+                    background: rgba(30, 41, 59, 0.98);
+                    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                    position: relative;
+                    white-space: nowrap;
+                }
+
+                .forecast-table th .col-icon {
+                    margin-right: 8px;
+                    color: var(--primary);
+                }
+
+                /* Linhas da tabela */
+                .forecast-table tbody tr {
+                    background: rgba(255, 255, 255, 0.01);
+                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+                    position: relative;
+                }
+
+                .forecast-table tbody tr:hover {
+                    background: rgba(255, 255, 255, 0.03);
+                    transform: translateX(5px);
+                }
+
+                /* Borda colorida à esquerda */
+                .forecast-table tbody tr::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 5px;
+                    bottom: 5px;
+                    width: 5px;
+                    background: var(--row-color);
+                    border-radius: 0 3px 3px 0;
+                    opacity: 0.8;
+                    transition: all 0.3s ease;
+                }
+
+                .forecast-table tbody tr:hover::before {
+                    opacity: 1;
+                    width: 8px;
+                }
+
+                /* Células da tabela */
+                .forecast-table td {
+                    padding: 20px 16px;
+                    color: var(--text-primary);
+                    font-size: 15px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+                    vertical-align: top;
+                    position: relative;
+                }
+
+                /* Primeira coluna - Área */
+                .area-cell {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    min-width: 180px;
+                }
+
+                .area-icon {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 20px;
+                    color: white;
+                    background: var(--icon-bg);
+                    box-shadow: 0 6px 12px var(--icon-shadow);
+                    transition: all 0.4s ease;
+                }
+
+                .forecast-table tr:hover .area-icon {
+                    transform: scale(1.1) rotate(5deg);
+                    box-shadow: 0 8px 16px var(--icon-shadow);
+                }
+
+                .area-info {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                }
+
+                .area-name {
+                    font-weight: 800;
+                    font-size: 16px;
+                    color: var(--text-primary);
+                    margin-bottom: 4px;
+                }
+
+                .area-desc {
+                    font-size: 13px;
+                    color: var(--text-secondary);
+                    line-height: 1.4;
+                }
+
+                /* Coluna métrica principal */
+                .metric-main {
+                    text-align: center;
+                    min-width: 100px;
+                }
+
+                .metric-value {
+                    font-weight: 900;
+                    font-size: 22px;
+                    background: var(--metric-gradient);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                    margin-bottom: 5px;
+                }
+
+                .metric-label {
+                    font-size: 12px;
+                    color: var(--text-secondary);
+                    text-transform: uppercase;
+                    letter-spacing: 0.6px;
+                }
+
+                /* Coluna de impacto */
+                .impact-cell {
+                    min-width: 130px;
+                }
+
+                .impact-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .impact-level {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 8px 14px;
+                    border-radius: 20px;
+                    background: var(--impact-bg);
+                    color: var(--impact-color);
+                    font-size: 13px;
+                    font-weight: 800;
+                    width: fit-content;
+                }
+
+                .impact-score {
+                    font-size: 12px;
+                    color: var(--text-secondary);
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                /* Coluna de progresso */
+                .progress-cell {
+                    min-width: 160px;
+                }
+
+                .progress-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                .progress-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .progress-label {
+                    font-size: 12px;
+                    color: var(--text-secondary);
+                }
+
+                .progress-value {
+                    font-size: 14px;
+                    font-weight: 800;
+                    color: var(--text-primary);
+                }
+
+                .progress-bar-wrapper {
+                    height: 8px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 4px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .progress-bar {
+                    height: 100%;
+                    width: var(--progress-width);
+                    background: var(--progress-gradient);
+                    border-radius: 4px;
+                    position: relative;
+                }
+
+                .progress-bar::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 10px;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+                }
+
+                /* Coluna de risco */
+                .risk-cell {
+                    min-width: 120px;
+                }
+
+                .risk-indicator {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .risk-level {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 8px 14px;
+                    border-radius: 20px;
+                    background: var(--risk-bg);
+                    color: var(--risk-color);
+                    font-size: 13px;
+                    font-weight: 800;
+                    width: fit-content;
+                }
+
+                /* Coluna de orçamento */
+                .budget-cell {
+                    min-width: 140px;
+                }
+
+                .budget-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .budget-value {
+                    font-size: 16px;
+                    font-weight: 800;
+                    color: var(--text-primary);
+                }
+
+                .budget-utilization {
+                    font-size: 12px;
+                    color: var(--text-secondary);
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                .budget-bar {
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 2px;
+                    overflow: hidden;
+                    margin-top: 4px;
+                }
+
+                .budget-fill {
+                    height: 100%;
+                    width: var(--budget-used);
+                    background: var(--row-color);
+                    border-radius: 2px;
+                }
+
+                /* Coluna de confiança */
+                .confidence-cell {
+                    min-width: 120px;
+                }
+
+                .confidence-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .confidence-value {
+                    font-size: 18px;
+                    font-weight: 900;
+                    color: var(--text-primary);
+                    text-align: center;
+                }
+
+                .confidence-indicator {
+                    height: 6px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 3px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .confidence-fill {
+                    height: 100%;
+                    width: var(--confidence-width);
+                    background: var(--row-color);
+                    border-radius: 3px;
+                }
+
+                /* NOVA COLUNA: Storytelling */
+                .storytelling-cell {
+                    min-width: 280px;
+                    max-width: 280px;
+                }
+
+                .storytelling-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+
+                .story-title {
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 5px;
+                }
+
+                .story-title i {
+                    color: var(--row-color);
+                }
+
+                .story-content {
+                    font-size: 13px;
+                    color: var(--text-secondary);
+                    line-height: 1.5;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+
+                .forecast-table tr:hover .story-content {
+                    -webkit-line-clamp: 8;
+                }
+
+                .story-highlights {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 6px;
+                    margin-top: 10px;
+                }
+
+                .highlight-tag {
+                    font-size: 11px;
+                    padding: 4px 8px;
+                    border-radius: 10px;
+                    background: rgba(255, 255, 255, 0.07);
+                    color: var(--text-secondary);
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                }
+
+                .highlight-tag.positive {
+                    background: rgba(16, 185, 129, 0.15);
+                    color: #10b981;
+                }
+
+                .highlight-tag.negative {
+                    background: rgba(239, 68, 68, 0.15);
+                    color: #ef4444;
+                }
+
+                .highlight-tag.neutral {
+                    background: rgba(148, 163, 184, 0.15);
+                    color: #94a3b8;
+                }
+
+                /* Efeito de zebra */
+                .forecast-table tbody tr:nth-child(even) {
+                    background: rgba(255, 255, 255, 0.02);
+                }
+
+                .forecast-table tbody tr:nth-child(even):hover {
+                    background: rgba(255, 255, 255, 0.04);
+                }
+
+                /* Animações */
+                @keyframes rowGlow {
+
+                    0%,
+                    100% {
+                        box-shadow: 0 0 0 0 rgba(var(--row-rgb), 0);
+                    }
+
+                    50% {
+                        box-shadow: 0 0 20px 0 rgba(var(--row-rgb), 0.3);
+                    }
+                }
+
+                .forecast-table tbody tr:hover {
+                    animation: rowGlow 2s infinite;
+                }
+
+                /* Cores específicas para cada linha */
+                .row-marketing {
+                    --row-color: #3b82f6;
+                    --row-rgb: 59, 130, 246;
+                    --metric-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6);
+                    --icon-bg: rgba(59, 130, 246, 0.15);
+                    --icon-shadow: rgba(59, 130, 246, 0.3);
+                    --impact-color: #10b981;
+                    --impact-bg: rgba(16, 185, 129, 0.15);
+                    --progress-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6);
+                    --progress-width: 82%;
+                    --risk-color: #10b981;
+                    --risk-bg: rgba(16, 185, 129, 0.15);
+                    --confidence-width: 85%;
+                    --budget-used: 78%;
+                }
+
+                .row-sales {
+                    --row-color: #10b981;
+                    --row-rgb: 16, 185, 129;
+                    --metric-gradient: linear-gradient(90deg, #10b981, #3b82f6);
+                    --icon-bg: rgba(16, 185, 129, 0.15);
+                    --icon-shadow: rgba(16, 185, 129, 0.3);
+                    --impact-color: #10b981;
+                    --impact-bg: rgba(16, 185, 129, 0.15);
+                    --progress-gradient: linear-gradient(90deg, #10b981, #3b82f6);
+                    --progress-width: 91%;
+                    --risk-color: #10b981;
+                    --risk-bg: rgba(16, 185, 129, 0.15);
+                    --confidence-width: 92%;
+                    --budget-used: 65%;
+                }
+
+                .row-production {
+                    --row-color: #f59e0b;
+                    --row-rgb: 245, 158, 11;
+                    --metric-gradient: linear-gradient(90deg, #f59e0b, #ef4444);
+                    --icon-bg: rgba(245, 158, 11, 0.15);
+                    --icon-shadow: rgba(245, 158, 11, 0.3);
+                    --impact-color: #ef4444;
+                    --impact-bg: rgba(239, 68, 68, 0.15);
+                    --progress-gradient: linear-gradient(90deg, #f59e0b, #ef4444);
+                    --progress-width: 65%;
+                    --risk-color: #ef4444;
+                    --risk-bg: rgba(239, 68, 68, 0.15);
+                    --confidence-width: 45%;
+                    --budget-used: 92%;
+                }
+
+                .row-logistics {
+                    --row-color: #8b5cf6;
+                    --row-rgb: 139, 92, 246;
+                    --metric-gradient: linear-gradient(90deg, #8b5cf6, #ec4899);
+                    --icon-bg: rgba(139, 92, 246, 0.15);
+                    --icon-shadow: rgba(139, 92, 246, 0.3);
+                    --impact-color: #f59e0b;
+                    --impact-bg: rgba(245, 158, 11, 0.15);
+                    --progress-gradient: linear-gradient(90deg, #8b5cf6, #ec4899);
+                    --progress-width: 78%;
+                    --risk-color: #f59e0b;
+                    --risk-bg: rgba(245, 158, 11, 0.15);
+                    --confidence-width: 72%;
+                    --budget-used: 55%;
+                }
+
+                .row-hr {
+                    --row-color: #ec4899;
+                    --row-rgb: 236, 72, 153;
+                    --metric-gradient: linear-gradient(90deg, #ec4899, #f97316);
+                    --icon-bg: rgba(236, 72, 153, 0.15);
+                    --icon-shadow: rgba(236, 72, 153, 0.3);
+                    --impact-color: #f59e0b;
+                    --impact-bg: rgba(245, 158, 11, 0.15);
+                    --progress-gradient: linear-gradient(90deg, #ec4899, #f97316);
+                    --progress-width: 55%;
+                    --risk-color: #f59e0b;
+                    --risk-bg: rgba(245, 158, 11, 0.15);
+                    --confidence-width: 68%;
+                    --budget-used: 45%;
+                }
+
+                .row-rd {
+                    --row-color: #0ea5e9;
+                    --row-rgb: 14, 165, 233;
+                    --metric-gradient: linear-gradient(90deg, #0ea5e9, #10b981);
+                    --icon-bg: rgba(14, 165, 233, 0.15);
+                    --icon-shadow: rgba(14, 165, 233, 0.3);
+                    --impact-color: #0ea5e9;
+                    --impact-bg: rgba(14, 165, 233, 0.15);
+                    --progress-gradient: linear-gradient(90deg, #0ea5e9, #10b981);
+                    --progress-width: 72%;
+                    --risk-color: #0ea5e9;
+                    --risk-bg: rgba(14, 165, 233, 0.15);
+                    --confidence-width: 88%;
+                    --budget-used: 82%;
+                }
+
+                /* Footer da tabela */
+                .table-footer {
+                    background: rgba(30, 41, 59, 0.95);
+                    padding: 20px 25px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .footer-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                }
+
+                .last-update {
+                    color: var(--text-secondary);
+                    font-size: 13px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .data-source {
+                    color: var(--text-secondary);
+                    font-size: 13px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .row-count {
+                    color: var(--text-primary);
+                    font-size: 14px;
+                    font-weight: 600;
+                    padding: 8px 16px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 12px;
+                }
+
+                /* Responsividade básica */
+                @media (max-width: 1250px) {
+                    .dashboard-container {
+                        width: 1100px;
+                        height: auto;
+                        min-height: 900px;
+                        overflow-x: auto;
+                    }
+
+                    .table-wrapper {
+                        min-width: 1050px;
+                    }
+                }
+            </style>
+
+
+            <div class="dashboard-container">
+                <!-- Cabeçalho -->
+                <div class="dashboard-header">
+                    <div class="header-main">
+                        <div class="quarter-badge">Q3</div>
+                        <div class="header-info">
+                            <h1>Resumo Trimestral por Área</h1>
+                            <p>Detalhamento do impacto de cada área no forecast do Q3 2025</p>
+
+                            <div class="header-stats">
+                                <div class="stat-card">
+                                    <div class="stat-value" style="--stat-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6)">
+                                        +8.2%
+                                        <span class="stat-trend">
+                                            <i class="fas fa-arrow-up"></i>
+                                            2.1% vs Q2
+                                        </span>
+                                    </div>
+                                    <div class="stat-label">Desvio Positivo vs Target</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" style="--stat-gradient: linear-gradient(90deg, #10b981, #3b82f6)">
+                                        94.7%
+                                        <span class="stat-trend">
+                                            <i class="fas fa-arrow-up"></i>
+                                            +3.2%
+                                        </span>
+                                    </div>
+                                    <div class="stat-label">Precisão do Forecast</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" style="--stat-gradient: linear-gradient(90deg, #8b5cf6, #ec4899)">
+                                        R$ 12.8M
+                                        <span class="stat-trend">
+                                            <i class="fas fa-arrow-up"></i>
+                                            +18.5%
+                                        </span>
+                                    </div>
+                                    <div class="stat-label">Receita Trimestral</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" style="--stat-gradient: linear-gradient(90deg, #f59e0b, #ef4444)">
+                                        4.6
+                                        <span class="stat-trend">
+                                            <i class="fas fa-arrow-down"></i>
+                                            -0.8
+                                        </span>
+                                    </div>
+                                    <div class="stat-label">Risco Médio (1-10)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela com storytelling -->
+                <div class="table-wrapper">
+                    <div class="table-header-fixed">
+                        <div class="table-title">
+                            <h2><i class="fas fa-book-open"></i> Narrativa do Impacto por Área</h2>
+                        </div>
+                        <div class="table-subtitle">
+                            <span><i class="fas fa-info-circle"></i> Passe o mouse sobre qualquer linha para expandir a história completa</span>
+                            <span><i class="fas fa-filter"></i> 6 áreas analisadas • Q3 2025</span>
+                        </div>
+                        <div class="table-legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #3b82f6;"></div>
+                                <span>Marketing & Vendas</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #10b981;"></div>
+                                <span>Operações</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #f59e0b;"></div>
+                                <span>Risco Elevado</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #8b5cf6;"></div>
+                                <span>Suporte</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #0ea5e9;"></div>
+                                <span>Inovação</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="forecast-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 180px;">
+                                        <i class="fas fa-layer-group col-icon"></i>
+                                        Área
+                                    </th>
+                                    <th style="width: 100px; text-align: center;">
+                                        <i class="fas fa-chart-bar col-icon"></i>
+                                        Métrica
+                                    </th>
+                                    <th style="width: 130px; text-align: center;">
+                                        <i class="fas fa-bolt col-icon"></i>
+                                        Impacto
+                                    </th>
+                                    <th style="width: 160px; text-align: center;">
+                                        <i class="fas fa-progress col-icon"></i>
+                                        Progresso
+                                    </th>
+                                    <th style="width: 120px; text-align: center;">
+                                        <i class="fas fa-exclamation-triangle col-icon"></i>
+                                        Risco
+                                    </th>
+                                    <th style="width: 140px; text-align: center;">
+                                        <i class="fas fa-money-bill-wave col-icon"></i>
+                                        Orçamento
+                                    </th>
+                                    <th style="width: 120px; text-align: center;">
+                                        <i class="fas fa-brain col-icon"></i>
+                                        Confiança
+                                    </th>
+                                    <th style="width: 280px;">
+                                        <i class="fas fa-book col-icon"></i>
+                                        Narrativa do Impacto
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Marketing -->
+                                <tr class="row-marketing">
+                                    <td class="area-cell">
+                                        <div class="area-icon">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                        <div class="area-info">
+                                            <div class="area-name">Marketing Digital</div>
+                                            <div class="area-desc">Campanhas & Conversão</div>
+                                        </div>
+                                    </td>
+                                    <td class="metric-main">
+                                        <div class="metric-value">+28.5%</div>
+                                        <div class="metric-label">Conversão</div>
+                                    </td>
+                                    <td class="impact-cell">
+                                        <div class="impact-container">
+                                            <div class="impact-level">
+                                                <i class="fas fa-arrow-up"></i>
+                                                <span>Alto</span>
+                                            </div>
+                                            <div class="impact-score">
+                                                <i class="fas fa-star"></i>
+                                                <span>Score: 8.2/10</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="progress-cell">
+                                        <div class="progress-container">
+                                            <div class="progress-header">
+                                                <div class="progress-label">Meta</div>
+                                                <div class="progress-value">82%</div>
+                                            </div>
+                                            <div class="progress-bar-wrapper">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="risk-cell">
+                                        <div class="risk-indicator">
+                                            <div class="risk-level">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>Baixo</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="budget-cell">
+                                        <div class="budget-container">
+                                            <div class="budget-value">R$ 850K</div>
+                                            <div class="budget-utilization">
+                                                <i class="fas fa-percentage"></i>
+                                                <span>78% usado</span>
+                                            </div>
+                                            <div class="budget-bar">
+                                                <div class="budget-fill"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="storytelling-cell">
+                                        <div class="storytelling-container">
+                                            <div class="story-title">
+                                                <i class="fas fa-lightbulb"></i>
+                                                <span>História do Sucesso</span>
+                                            </div>
+                                            <div class="story-content">
+                                                O Q3 testemunhou uma transformação digital impressionante. Nossas campanhas TikTok, lançadas em julho, geraram engajamento 15% acima do esperado, convertendo em vendas diretas de R$ 420K. A estratégia de influencer marketing com 5 creators principais resultou em alcance orgânico 22% maior, reduzindo CAC em 18%. A campanha "Nexus Launch" superou todas as métricas de ROI, com retorno de 4.2x o investimento. Este desempenho excepcional contribuiu diretamente para o desvio positivo de 8.2% no forecast.
+                                            </div>
+                                            <div class="story-highlights">
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-rocket"></i>
+                                                    <span>ROI 4.2x</span>
+                                                </div>
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-users"></i>
+                                                    <span>+22% Alcance</span>
+                                                </div>
+                                                <div class="highlight-tag neutral">
+                                                    <i class="fas fa-search"></i>
+                                                    <span>SEO #1</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Vendas -->
+                                <tr class="row-sales">
+                                    <td class="area-cell">
+                                        <div class="area-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="area-info">
+                                            <div class="area-name">Vendas & Revenue</div>
+                                            <div class="area-desc">Enterprise & SMB</div>
+                                        </div>
+                                    </td>
+                                    <td class="metric-main">
+                                        <div class="metric-value">R$ 4.2M</div>
+                                        <div class="metric-label">Receita</div>
+                                    </td>
+                                    <td class="impact-cell">
+                                        <div class="impact-container">
+                                            <div class="impact-level">
+                                                <i class="fas fa-arrow-up"></i>
+                                                <span>Muito Alto</span>
+                                            </div>
+                                            <div class="impact-score">
+                                                <i class="fas fa-star"></i>
+                                                <span>Score: 9.1/10</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="progress-cell">
+                                        <div class="progress-container">
+                                            <div class="progress-header">
+                                                <div class="progress-label">Meta</div>
+                                                <div class="progress-value">91%</div>
+                                            </div>
+                                            <div class="progress-bar-wrapper">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="risk-cell">
+                                        <div class="risk-indicator">
+                                            <div class="risk-level">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>Baixo</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="budget-cell">
+                                        <div class="budget-container">
+                                            <div class="budget-value">R$ 1.2M</div>
+                                            <div class="budget-utilization">
+                                                <i class="fas fa-percentage"></i>
+                                                <span>65% usado</span>
+                                            </div>
+                                            <div class="budget-bar">
+                                                <div class="budget-fill"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="storytelling-cell">
+                                        <div class="storytelling-container">
+                                            <div class="story-title">
+                                                <i class="fas fa-trophy"></i>
+                                                <span>Recorde Histórico</span>
+                                            </div>
+                                            <div class="story-content">
+                                                A nova equipe enterprise, contratada em junho, fechou 15 deals de grande porte totalizando R$ 2.8M - 35% acima da meta. Nossa estratégia de upselling treinada em agosto resultou em aumento de 22% no ticket médio. O setor SMB apresentou crescimento consistente de 12%, apesar de um churn de 8% que foi compensado por aquisição agressiva. O pipeline para Q4 é o mais robusto da história da empresa, com R$ 6.5M em negociações avançadas. Esta performance extraordinária solidificou nossa projeção de crescimento anual.
+                                            </div>
+                                            <div class="story-highlights">
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-user-tie"></i>
+                                                    <span>15 Deals Enterprise</span>
+                                                </div>
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <span>+22% Ticket Médio</span>
+                                                </div>
+                                                <div class="highlight-tag negative">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                    <span>Churn 8% SMB</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Produção -->
+                                <tr class="row-production">
+                                    <td class="area-cell">
+                                        <div class="area-icon">
+                                            <i class="fas fa-industry"></i>
+                                        </div>
+                                        <div class="area-info">
+                                            <div class="area-name">Produção</div>
+                                            <div class="area-desc">Eficiência Operacional</div>
+                                        </div>
+                                    </td>
+                                    <td class="metric-main">
+                                        <div class="metric-value">-12.4%</div>
+                                        <div class="metric-label">Eficiência</div>
+                                    </td>
+                                    <td class="impact-cell">
+                                        <div class="impact-container">
+                                            <div class="impact-level">
+                                                <i class="fas fa-arrow-down"></i>
+                                                <span>Crítico</span>
+                                            </div>
+                                            <div class="impact-score">
+                                                <i class="fas fa-star"></i>
+                                                <span>Score: 3.5/10</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="progress-cell">
+                                        <div class="progress-container">
+                                            <div class="progress-header">
+                                                <div class="progress-label">Meta</div>
+                                                <div class="progress-value">65%</div>
+                                            </div>
+                                            <div class="progress-bar-wrapper">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="risk-cell">
+                                        <div class="risk-indicator">
+                                            <div class="risk-level">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                                <span>Alto</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="budget-cell">
+                                        <div class="budget-container">
+                                            <div class="budget-value">R$ 2.1M</div>
+                                            <div class="budget-utilization">
+                                                <i class="fas fa-percentage"></i>
+                                                <span>92% usado</span>
+                                            </div>
+                                            <div class="budget-bar">
+                                                <div class="budget-fill"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="storytelling-cell">
+                                        <div class="storytelling-container">
+                                            <div class="story-title">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <span>Desafios Operacionais</span>
+                                            </div>
+                                            <div class="story-content">
+                                                O trimestre foi marcado por desafios significativos na cadeia de suprimentos. Nosso fornecedor principal atrasou entregas em 2 semanas devido a greves portuárias, impactando 40% da produção planejada para agosto. Em setembro, uma falha crítica em equipamento essencial exigiu manutenção emergencial de 5 dias, reduzindo produtividade em 15%. Apesar dos desafios, a qualidade foi mantida em 99.2% de aprovação. Medidas corretivas incluem diversificação de fornecedores e programa de manutenção preventiva. Este foi o principal fator de risco para o forecast.
+                                            </div>
+                                            <div class="story-highlights">
+                                                <div class="highlight-tag negative">
+                                                    <i class="fas fa-clock"></i>
+                                                    <span>Atraso 2 Semanas</span>
+                                                </div>
+                                                <div class="highlight-tag negative">
+                                                    <i class="fas fa-tools"></i>
+                                                    <span>-15% Produtividade</span>
+                                                </div>
+                                                <div class="highlight-tag neutral">
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <span>Qualidade 99.2%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Logística -->
+                                <tr class="row-logistics">
+                                    <td class="area-cell">
+                                        <div class="area-icon">
+                                            <i class="fas fa-shipping-fast"></i>
+                                        </div>
+                                        <div class="area-info">
+                                            <div class="area-name">Logística</div>
+                                            <div class="area-desc">Otimização de Custos</div>
+                                        </div>
+                                    </td>
+                                    <td class="metric-main">
+                                        <div class="metric-value">-8.2%</div>
+                                        <div class="metric-label">Custos</div>
+                                    </td>
+                                    <td class="impact-cell">
+                                        <div class="impact-container">
+                                            <div class="impact-level">
+                                                <i class="fas fa-arrow-up"></i>
+                                                <span>Moderado</span>
+                                            </div>
+                                            <div class="impact-score">
+                                                <i class="fas fa-star"></i>
+                                                <span>Score: 6.8/10</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="progress-cell">
+                                        <div class="progress-container">
+                                            <div class="progress-header">
+                                                <div class="progress-label">Meta</div>
+                                                <div class="progress-value">78%</div>
+                                            </div>
+                                            <div class="progress-bar-wrapper">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="risk-cell">
+                                        <div class="risk-indicator">
+                                            <div class="risk-level">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <span>Médio</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="budget-cell">
+                                        <div class="budget-container">
+                                            <div class="budget-value">R$ 680K</div>
+                                            <div class="budget-utilization">
+                                                <i class="fas fa-percentage"></i>
+                                                <span>55% usado</span>
+                                            </div>
+                                            <div class="budget-bar">
+                                                <div class="budget-fill"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="storytelling-cell">
+                                        <div class="storytelling-container">
+                                            <div class="story-title">
+                                                <i class="fas fa-chart-line"></i>
+                                                <span>Otimização Bem-Sucedida</span>
+                                            </div>
+                                            <div class="story-content">
+                                                A renegociação contratual com nossas 3 principais transportadoras em julho resultou em redução de 12% nos custos logísticos. Implementamos sistema de otimização de rotas baseado em IA que aumentou eficiência em 8% e reduziu tempo de entrega médio em 15%. Apesar do aumento de 5% no preço do combustível, mantivemos economia líquida de 8.2%. A iniciativa de consolidação de cargas reduziu número de viagens em 22%. Estas otimizações contribuíram positivamente para a margem operacional do trimestre.
+                                            </div>
+                                            <div class="story-highlights">
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-handshake"></i>
+                                                    <span>-12% Custos</span>
+                                                </div>
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-route"></i>
+                                                    <span>+8% Eficiência</span>
+                                                </div>
+                                                <div class="highlight-tag negative">
+                                                    <i class="fas fa-gas-pump"></i>
+                                                    <span>+5% Combustível</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- RH -->
+                                <tr class="row-hr">
+                                    <td class="area-cell">
+                                        <div class="area-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="area-info">
+                                            <div class="area-name">Recursos Humanos</div>
+                                            <div class="area-desc">Produtividade & Retenção</div>
+                                        </div>
+                                    </td>
+                                    <td class="metric-main">
+                                        <div class="metric-value">+15.3%</div>
+                                        <div class="metric-label">Produtividade</div>
+                                    </td>
+                                    <td class="impact-cell">
+                                        <div class="impact-container">
+                                            <div class="impact-level">
+                                                <i class="fas fa-arrow-right"></i>
+                                                <span>Moderado</span>
+                                            </div>
+                                            <div class="impact-score">
+                                                <i class="fas fa-star"></i>
+                                                <span>Score: 5.5/10</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="progress-cell">
+                                        <div class="progress-container">
+                                            <div class="progress-header">
+                                                <div class="progress-label">Meta</div>
+                                                <div class="progress-value">55%</div>
+                                            </div>
+                                            <div class="progress-bar-wrapper">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="risk-cell">
+                                        <div class="risk-indicator">
+                                            <div class="risk-level">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <span>Médio</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="budget-cell">
+                                        <div class="budget-container">
+                                            <div class="budget-value">R$ 420K</div>
+                                            <div class="budget-utilization">
+                                                <i class="fas fa-percentage"></i>
+                                                <span>45% usado</span>
+                                            </div>
+                                            <div class="budget-bar">
+                                                <div class="budget-fill"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="storytelling-cell">
+                                        <div class="storytelling-container">
+                                            <div class="story-title">
+                                                <i class="fas fa-balance-scale"></i>
+                                                <span>Progresso e Desafios</span>
+                                            </div>
+                                            <div class="story-content">
+                                                Nossos programas de treinamento avançado em liderança e técnicas de vendas resultaram em aumento de 15.3% na produtividade média. No entanto, enfrentamos turnover de 12% (meta: 8%), principalmente no setor júnior. A satisfação no trabalho se manteve em 78%, mesmo com aumento da carga horária. Implementamos programa de benefícios flexíveis que aumentou retenção de talentos seniores em 25%. Para Q4, focaremos em plano de carreira estruturado e programa de mentoria para reduzir turnover.
+                                            </div>
+                                            <div class="story-highlights">
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                    <span>+15% Produtividade</span>
+                                                </div>
+                                                <div class="highlight-tag negative">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                    <span>Turnover 12%</span>
+                                                </div>
+                                                <div class="highlight-tag neutral">
+                                                    <i class="fas fa-smile"></i>
+                                                    <span>Satisfação 78%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- P&D -->
+                                <tr class="row-rd">
+                                    <td class="area-cell">
+                                        <div class="area-icon">
+                                            <i class="fas fa-flask"></i>
+                                        </div>
+                                        <div class="area-info">
+                                            <div class="area-name">Pesquisa & Desenvolvimento</div>
+                                            <div class="area-desc">Inovação & Produtos</div>
+                                        </div>
+                                    </td>
+                                    <td class="metric-main">
+                                        <div class="metric-value">2</div>
+                                        <div class="metric-label">Novos Produtos</div>
+                                    </td>
+                                    <td class="impact-cell">
+                                        <div class="impact-container">
+                                            <div class="impact-level">
+                                                <i class="fas fa-arrow-up"></i>
+                                                <span>Futuro</span>
+                                            </div>
+                                            <div class="impact-score">
+                                                <i class="fas fa-star"></i>
+                                                <span>Score: 7.2/10</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="progress-cell">
+                                        <div class="progress-container">
+                                            <div class="progress-header">
+                                                <div class="progress-label">Meta</div>
+                                                <div class="progress-value">72%</div>
+                                            </div>
+                                            <div class="progress-bar-wrapper">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="risk-cell">
+                                        <div class="risk-indicator">
+                                            <div class="risk-level">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <span>Moderado</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="budget-cell">
+                                        <div class="budget-container">
+                                            <div class="budget-value">R$ 1.5M</div>
+                                            <div class="budget-utilization">
+                                                <i class="fas fa-percentage"></i>
+                                                <span>82% usado</span>
+                                            </div>
+                                            <div class="budget-bar">
+                                                <div class="budget-fill"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="storytelling-cell">
+                                        <div class="storytelling-container">
+                                            <div class="story-title">
+                                                <i class="fas fa-seedling"></i>
+                                                <span>Inovação para o Futuro</span>
+                                            </div>
+                                            <div class="story-content">
+                                                Desenvolvemos dois produtos inovadores que prometem transformar nosso portfólio. O Produto Alpha está 85% completo, com testes beta programados para Q4 e lançamento comercial em Q1 2026. Já o Produto Beta atinge 70% de desenvolvimento, trazendo tecnologia exclusiva protegida por patente pendente. Nossa equipe de P&D cresceu 25% com contratação de 3 PhDs em machine learning. O investimento em inovação posiciona a empresa para liderar em 2026, com expectativa de contribuir R$ 8M em receita nos primeiros 12 meses pós-lançamento.
+                                            </div>
+                                            <div class="story-highlights">
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-cogs"></i>
+                                                    <span>Alpha 85% Completo</span>
+                                                </div>
+                                                <div class="highlight-tag positive">
+                                                    <i class="fas fa-cogs"></i>
+                                                    <span>Beta 70% Completo</span>
+                                                </div>
+                                                <div class="highlight-tag neutral">
+                                                    <i class="fas fa-file-alt"></i>
+                                                    <span>Patente Pendente</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <div class="footer-info">
+                            <div class="last-update">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Última atualização: 15/11/2023 14:30</span>
+                            </div>
+                            <div class="data-source">
+                                <i class="fas fa-database"></i>
+                                <span>Fonte: Sistemas ERP + Analytics AI</span>
+                            </div>
+                        </div>
+                        <div class="row-count">
+                            <i class="fas fa-list"></i>
+                            <span>6 áreas analisadas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // JavaScript para melhorar a experiência
+                document.addEventListener('DOMContentLoaded', function() {
+                    const rows = document.querySelectorAll('.forecast-table tbody tr');
+                    const progressBars = document.querySelectorAll('.progress-bar');
+                    const confidenceFills = document.querySelectorAll('.confidence-fill');
+                    const budgetFills = document.querySelectorAll('.budget-fill');
+
+                    // Animação de entrada das linhas
+                    setTimeout(() => {
+                        rows.forEach((row, index) => {
+                            setTimeout(() => {
+                                row.style.opacity = '0';
+                                row.style.transform = 'translateX(-30px)';
+                                row.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+                                setTimeout(() => {
+                                    row.style.opacity = '1';
+                                    row.style.transform = 'translateX(0)';
+                                }, 100);
+                            }, index * 100);
+                        });
+                    }, 300);
+
+                    // Animar barras de progresso
+                    progressBars.forEach(bar => {
+                        const width = getComputedStyle(bar).getPropertyValue('--progress-width');
+                        bar.style.width = '0';
+
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 1000);
+                    });
+
+                    // Animar barras de confiança
+                    confidenceFills.forEach(fill => {
+                        const width = getComputedStyle(fill).getPropertyValue('--confidence-width');
+                        fill.style.width = '0';
+
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 1200);
+                    });
+
+                    // Animar barras de orçamento
+                    budgetFills.forEach(fill => {
+                        const width = getComputedStyle(fill).getPropertyValue('--budget-used');
+                        fill.style.width = '0';
+
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 1400);
+                    });
+
+                    // Efeito hover expandindo a narrativa
+                    rows.forEach(row => {
+                        row.addEventListener('mouseenter', function() {
+                            const rowColor = getComputedStyle(this).getPropertyValue('--row-color');
+                            this.style.boxShadow = `
+                        0 8px 25px rgba(0, 0, 0, 0.2),
+                        0 0 0 1px ${rowColor}40,
+                        0 0 25px ${rowColor}30
+                    `;
+
+                            // Expandir ícone
+                            const icon = this.querySelector('.area-icon');
+                            if (icon) {
+                                icon.style.transform = 'scale(1.1) rotate(5deg)';
+                            }
+                        });
+
+                        row.addEventListener('mouseleave', function() {
+                            this.style.boxShadow = '';
+
+                            // Recolher ícone
+                            const icon = this.querySelector('.area-icon');
+                            if (icon) {
+                                icon.style.transform = 'scale(1) rotate(0deg)';
+                            }
+                        });
+                    });
+
+                    // Efeito nos highlight tags
+                    const highlightTags = document.querySelectorAll('.highlight-tag');
+                    highlightTags.forEach(tag => {
+                        tag.addEventListener('mouseenter', function() {
+                            this.style.transform = 'translateY(-2px)';
+                        });
+
+                        tag.addEventListener('mouseleave', function() {
+                            this.style.transform = 'translateY(0)';
+                        });
+                    });
+                });
+            </script>
+
+        </div>
+    </div>
+</div>
