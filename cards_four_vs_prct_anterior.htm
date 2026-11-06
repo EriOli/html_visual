@@ -1,0 +1,468 @@
+ <style>
+     * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         cursor: default;
+         user-select: none;
+         -webkit-user-select: none;
+         caret-color: transparent
+     }
+
+     body {
+         font-family: 'Segoe UI', sans-serif;
+         background: transparent;
+         overflow: hidden
+     }
+
+     .r {
+         display: flex;
+         gap: 10px;
+         width: 100%;
+         height: 100%
+     }
+
+     .c {
+         flex: 1 1 0;
+         min-width: 0;
+         background: #fff;
+         border: 1px solid #e8e8ec;
+         border-radius: 6px;
+         box-shadow: 0 0 4px rgba(0, 0, 0, .03);
+         display: flex;
+         flex-direction: column;
+         transition: border-color .3s ease;
+         overflow: hidden;
+         position: relative
+     }
+
+     .c1:hover {
+         border-color: rgb(146, 134, 221)
+     }
+
+     .c2:hover {
+         border-color: rgb(214, 92, 224)
+     }
+
+     .c3:hover {
+         border-color: rgb(48, 144, 69)
+     }
+
+     .c4:hover {
+         border-color: rgb(251, 87, 87)
+     }
+
+     .ck {
+         position: absolute;
+         opacity: 0;
+         pointer-events: none
+     }
+
+     .hd {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding: 12px 16px;
+         border-bottom: 1px solid rgba(63, 64, 95, .15)
+     }
+
+     .hl {
+         display: flex;
+         align-items: center;
+         gap: 8px
+     }
+
+     .ib {
+         width: 28px;
+         height: 28px;
+         border-radius: 7px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         box-shadow: 0 0 2px rgba(0, 0, 0, .15)
+     }
+
+     .ib svg {
+         width: 16px;
+         height: 16px;
+         fill: none;
+         stroke-width: 1.8;
+         stroke-linecap: round;
+         stroke-linejoin: round
+     }
+
+     .lb {
+         font-size: 12px;
+         font-weight: 500;
+         color: #71717a
+     }
+
+     .dt {
+         padding: 2px 4px;
+         border-radius: 4px;
+         transition: background .2s;
+         cursor: pointer
+     }
+
+     .dt:hover {
+         background: #f3f4f6
+     }
+
+     .dt svg {
+         width: 16px;
+         height: 16px
+     }
+
+     .bd {
+         position: relative;
+         height: 76px;
+         overflow: hidden
+     }
+
+     .mn {
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         display: flex;
+         align-items: flex-end;
+         gap: 8px;
+         padding: 16px 16px 20px;
+         transition: opacity .22s ease, transform .22s ease
+     }
+
+     .ti {
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         padding: 12px 16px 10px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         opacity: 0;
+         transform: translateY(6px);
+         transition: opacity .22s ease, transform .22s ease
+     }
+
+     .ck:checked~.hd~.bd .mn {
+         opacity: 0;
+         transform: translateY(-6px)
+     }
+
+     .ck:checked~.hd~.bd .ti {
+         opacity: 1;
+         transform: translateY(0)
+     }
+
+     .v {
+         font-size: 22px;
+         font-weight: 600;
+         color: #18181b;
+         line-height: 1.15;
+         letter-spacing: -0.02em;
+         white-space: nowrap
+     }
+
+     .br {
+         display: flex;
+         align-items: center;
+         gap: 4px;
+         padding-bottom: 2px
+     }
+
+     .bg {
+         display: flex;
+         align-items: center;
+         gap: 2px;
+         padding: 2px 5px;
+         border-radius: 2px
+     }
+
+     .bg svg {
+         width: 10px;
+         height: 10px;
+         fill: none;
+         stroke-width: 2.5;
+         stroke-linecap: round;
+         stroke-linejoin: round
+     }
+
+     .bg span {
+         font-size: 11px;
+         font-weight: 600
+     }
+
+     .bu {
+         background: #E6FCF1;
+         border: .5px solid #A3D7AE
+     }
+
+     .bu span {
+         color: #309045
+     }
+
+     .bu svg {
+         stroke: #309045
+     }
+
+     .bn {
+         background: #FFF8F8;
+         border: .5px solid #F3C6C6
+     }
+
+     .bn span {
+         color: #E13600
+     }
+
+     .bn svg {
+         stroke: #E13600
+     }
+
+     .fl {
+         font-size: 11px;
+         color: #a1a1aa
+     }
+
+     .i1 {
+         background: rgba(146, 134, 221, .1);
+         border: 1px solid rgba(146, 134, 221, .4)
+     }
+
+     .i1 svg {
+         stroke: rgb(146, 134, 221)
+     }
+
+     .i2 {
+         background: rgba(214, 92, 224, .1);
+         border: 1px solid rgba(214, 92, 224, .4)
+     }
+
+     .i2 svg {
+         stroke: rgb(214, 92, 224)
+     }
+
+     .i3 {
+         background: rgba(48, 144, 69, .1);
+         border: 1px solid rgba(48, 144, 69, .4)
+     }
+
+     .i3 svg {
+         stroke: rgb(48, 144, 69)
+     }
+
+     .i4 {
+         background: rgba(251, 87, 87, .1);
+         border: 1px solid rgba(251, 87, 87, .4)
+     }
+
+     .i4 svg {
+         stroke: rgb(251, 87, 87)
+     }
+
+     .rw {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         margin-bottom: 5px
+     }
+
+     .rw:last-child {
+         margin-bottom: 0
+     }
+
+     .rl {
+         font-size: 10px;
+         color: #4b5563;
+         width: 78px;
+         flex-shrink: 0
+     }
+
+     .rt {
+         flex: 1;
+         height: 6px;
+         background: #F3F4F6;
+         border-radius: 3px;
+         overflow: hidden
+     }
+
+     .rf {
+         height: 100%;
+         border-radius: 3px
+     }
+
+     .rv {
+         font-size: 10px;
+         color: #6b7280;
+         width: 32px;
+         text-align: right;
+         flex-shrink: 0
+     }
+ </style>
+ <div class='r'>
+     <div class='c c1'><input type='checkbox' class='ck' id='t1' />
+         <div class='hd'>
+             <div class='hl'>
+                 <div class='ib i1'><svg viewBox='0 0 24 24'>
+                         <line x1='12' y1='1' x2='12' y2='23' />
+                         <path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' />
+                     </svg></div><span class='lb'>Faturamento Líquido</span>
+             </div><label for='t1' class='dt'><svg viewBox='0 0 24 24' fill='rgba(125,125,125,0.6)'>
+                     <circle cx='5' cy='12' r='1.5' />
+                     <circle cx='12' cy='12' r='1.5' />
+                     <circle cx='19' cy='12' r='1.5' />
+                 </svg></label>
+         </div>
+         <div class='bd'>
+             <div class='mn'><span class='v'>R$ 4,89 Mi</span>
+                 <div class='br'>
+                     <div class='bg bu'><span>+9,3%</span><svg viewBox='0 0 24 24'>
+                             <polyline points='18 15 12 9 6 15' />
+                         </svg></div><span class='fl'>vs mês ant.</span>
+                 </div>
+             </div>
+             <div class='ti'>
+                 <div class='rw'><span class='rl'>Varejo</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:47%;background:rgb(146,134,221)'></div>
+                     </div><span class='rv'>47%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Distribuidoras</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:32%;background:rgba(146,134,221,.5)'></div>
+                     </div><span class='rv'>32%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Online</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:21%;background:rgba(146,134,221,.3)'></div>
+                     </div><span class='rv'>21%</span>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class='c c2'><input type='checkbox' class='ck' id='t2' />
+         <div class='hd'>
+             <div class='hl'>
+                 <div class='ib i2'><svg viewBox='0 0 24 24'>
+                         <path d='M21 12V7H5a2 2 0 0 1 0-4h14v4' />
+                         <path d='M3 5v14a2 2 0 0 0 2 2h16v-5' />
+                         <path d='M18 12a2 2 0 0 0 0 4h4v-4Z' />
+                     </svg></div><span class='lb'>Lucro Líquido</span>
+             </div><label for='t2' class='dt'><svg viewBox='0 0 24 24' fill='rgba(125,125,125,0.6)'>
+                     <circle cx='5' cy='12' r='1.5' />
+                     <circle cx='12' cy='12' r='1.5' />
+                     <circle cx='19' cy='12' r='1.5' />
+                 </svg></label>
+         </div>
+         <div class='bd'>
+             <div class='mn'><span class='v'>R$ 2,01 Mi</span>
+                 <div class='br'>
+                     <div class='bg bu'><span>+7,9%</span><svg viewBox='0 0 24 24'>
+                             <polyline points='18 15 12 9 6 15' />
+                         </svg></div><span class='fl'>vs mês ant.</span>
+                 </div>
+             </div>
+             <div class='ti'>
+                 <div class='rw'><span class='rl'>Varejo</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:48%;background:rgb(214,92,224)'></div>
+                     </div><span class='rv'>48%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Distribuidoras</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:32%;background:rgba(214,92,224,.5)'></div>
+                     </div><span class='rv'>32%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Online</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:20%;background:rgba(214,92,224,.3)'></div>
+                     </div><span class='rv'>20%</span>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class='c c3'><input type='checkbox' class='ck' id='t3' />
+         <div class='hd'>
+             <div class='hl'>
+                 <div class='ib i3'><svg viewBox='0 0 24 24'>
+                         <line x1='19' y1='5' x2='5' y2='19' />
+                         <circle cx='6.5' cy='6.5' r='2.5' />
+                         <circle cx='17.5' cy='17.5' r='2.5' />
+                     </svg></div><span class='lb'>Margem Bruta</span>
+             </div><label for='t3' class='dt'><svg viewBox='0 0 24 24' fill='rgba(125,125,125,0.6)'>
+                     <circle cx='5' cy='12' r='1.5' />
+                     <circle cx='12' cy='12' r='1.5' />
+                     <circle cx='19' cy='12' r='1.5' />
+                 </svg></label>
+         </div>
+         <div class='bd'>
+             <div class='mn'><span class='v'>41,4%</span>
+                 <div class='br'>
+                     <div class='bg bn'><span>-0,3 pp</span><svg viewBox='0 0 24 24'>
+                             <polyline points='6 9 12 15 18 9' />
+                         </svg></div><span class='fl'>vs mês ant.</span>
+                 </div>
+             </div>
+             <div class='ti'>
+                 <div class='rw'><span class='rl'>Varejo</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:48%;background:rgb(48,144,69)'></div>
+                     </div><span class='rv'>48%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Distribuidoras</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:32%;background:rgba(48,144,69,.5)'></div>
+                     </div><span class='rv'>32%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Online</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:20%;background:rgba(48,144,69,.3)'></div>
+                     </div><span class='rv'>20%</span>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class='c c4'><input type='checkbox' class='ck' id='t4' />
+         <div class='hd'>
+             <div class='hl'>
+                 <div class='ib i4'><svg viewBox='0 0 24 24'>
+                         <circle cx='8' cy='21' r='1' />
+                         <circle cx='19' cy='21' r='1' />
+                         <path d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12' />
+                     </svg></div><span class='lb'>Qtd Vendas</span>
+             </div><label for='t4' class='dt'><svg viewBox='0 0 24 24' fill='rgba(125,125,125,0.6)'>
+                     <circle cx='5' cy='12' r='1.5' />
+                     <circle cx='12' cy='12' r='1.5' />
+                     <circle cx='19' cy='12' r='1.5' />
+                 </svg></label>
+         </div>
+         <div class='bd'>
+             <div class='mn'><span class='v'>24.832</span>
+                 <div class='br'>
+                     <div class='bg bu'><span>+9,1%</span><svg viewBox='0 0 24 24'>
+                             <polyline points='18 15 12 9 6 15' />
+                         </svg></div><span class='fl'>vs mês ant.</span>
+                 </div>
+             </div>
+             <div class='ti'>
+                 <div class='rw'><span class='rl'>Varejo</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:41%;background:rgb(251,87,87)'></div>
+                     </div><span class='rv'>41%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Distribuidoras</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:32%;background:rgba(251,87,87,.5)'></div>
+                     </div><span class='rv'>32%</span>
+                 </div>
+                 <div class='rw'><span class='rl'>Online</span>
+                     <div class='rt'>
+                         <div class='rf' style='width:27%;background:rgba(251,87,87,.3)'></div>
+                     </div><span class='rv'>27%</span>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>

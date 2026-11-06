@@ -1,0 +1,389 @@
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden
+    }
+
+    .ch {
+        position: relative;
+        font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+        background: #fff;
+        border: 1px solid #efefef;
+        border-radius: 14px;
+        padding: 18px 20px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden
+    }
+
+    .ch * {
+        box-sizing: border-box
+    }
+
+    .ch .hd {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        flex-shrink: 0
+    }
+
+    .ch .ttl {
+        color: #111827;
+        font-weight: 700;
+        font-size: 16px
+    }
+
+    .ch .ctrl {
+        display: flex;
+        align-items: center;
+        gap: 12px
+    }
+
+    .ch .ck {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #374151;
+        font-size: 12.5px;
+        font-weight: 500;
+        cursor: pointer;
+        user-select: none
+    }
+
+    .ch .ckbox {
+        width: 15px;
+        height: 15px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 10px;
+        line-height: 1;
+        background: #101010
+    }
+
+    .ch .ckbox.off {
+        background: #fff;
+        border: 1px solid #d1d5db;
+        color: transparent
+    }
+
+    .ch .ysel {
+        position: relative
+    }
+
+    .ch .ybtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 7px 12px;
+        color: #374151;
+        font-size: 12.5px;
+        font-weight: 500;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all .15s
+    }
+
+    .ch .ybtn:hover {
+        background: #f8fafc;
+        border-color: #d1d5db
+    }
+
+    .ch .ychev {
+        font-size: 9px;
+        color: #9ca3af;
+        transition: transform .2s
+    }
+
+    .ch .ysel.open .ychev {
+        transform: rotate(180deg)
+    }
+
+    .ch .ymenu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: calc(100% + 6px);
+        background: #fff;
+        border: 1px solid #eef0f2;
+        border-radius: 12px;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, .12);
+        padding: 5px;
+        min-width: 96px;
+        z-index: 20
+    }
+
+    .ch .ysel.open .ymenu {
+        display: block
+    }
+
+    .ch .yopt {
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 12.5px;
+        color: #475569;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background .12s
+    }
+
+    .ch .yopt:hover {
+        background: #f8fafc
+    }
+
+    .ch .yopt.sel {
+        background: #ecfdf3;
+        color: #15803d
+    }
+
+    .ch .lg {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 12px;
+        flex-shrink: 0
+    }
+
+    .ch .lg span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #4b5563;
+        font-size: 12px;
+        font-weight: 500
+    }
+
+    .ch .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%
+    }
+
+    .ch .tip {
+        position: absolute;
+        pointer-events: none;
+        background: #fff;
+        border: 1px solid #eef0f2;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, .12);
+        padding: 9px 11px;
+        font-size: 12px;
+        color: #374151;
+        display: none;
+        z-index: 30;
+        min-width: 128px
+    }
+
+    .ch .tip .tm {
+        font-weight: 700;
+        color: #111827;
+        font-size: 12px;
+        margin-bottom: 6px
+    }
+
+    .ch .tip .tr {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px
+    }
+
+    .ch .tip .tr .d {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%
+    }
+
+    .ch .tip .tr b {
+        margin-left: auto;
+        font-weight: 600;
+        color: #111827
+    }
+</style>
+<div class='ch' id='wrap'>
+    <div class='hd'><span class='ttl'>Visão de Vendas &amp; Pedidos</span>
+        <div class='ctrl'><label class='ck'><input type='checkbox' id='kR' checked onchange='draw()' style='display:none'><span id='bR' class='ckbox'>✓</span>Mostrar Receita</label><label class='ck'><input type='checkbox' id='kP' checked onchange='draw()' style='display:none'><span id='bP' class='ckbox'>✓</span>Mostrar Pedidos</label>
+            <div class='ysel' id='ysel'><button type='button' class='ybtn' onclick='yTog()'><span id='ylbl'>2025</span><span class='ychev'>▾</span></button>
+                <div class='ymenu' id='ymenu'>
+                    <div class='yopt sel' data-y='2025' onclick='yPick(2025)'>2025</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='lg'><span><span class='dot' style='background:#22c55e'></span>Pedidos</span><span><span class='dot' style='background:#166534'></span>Receita</span></div><svg viewBox='0 0 644 245' style='width:100%;flex:1;min-height:0;display:block;margin-top:10px' xmlns='http://www.w3.org/2000/svg'>
+        <g id='ax'></g>
+        <g id='bars'></g>
+        <g id='line'></g>
+        <g id='hl'></g>
+        <g id='hit'></g>
+    </svg>
+    <div class='tip' id='tip'></div>
+</div>
+<script>
+    var D = {
+        2025: {
+            m: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            p: [182, 170, 155, 175, 185, 206, 196, 180, 187],
+            r: [5921, 5540, 5066, 5728, 6063, 6750, 6463, 5932, 6173]
+        }
+    };
+</script>
+<script>
+    var MF = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    var L = ['', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    var GL = 64,
+        GR = 604,
+        GB = 210,
+        H = 196,
+        YEAR = 2025,
+        C = {};
+
+    function gv(i) {
+        return document.getElementById(i);
+    }
+
+    function yTog() {
+        gv('ysel').classList.toggle('open');
+    }
+
+    function yPick(y) {
+        YEAR = y;
+        gv('ylbl').textContent = y;
+        var o = document.querySelectorAll('.yopt');
+        for (var j = 0; j < o.length; j++) {
+            o[j].classList.toggle('sel', +o[j].getAttribute('data-y') === y);
+        }
+        gv('ysel').classList.remove('open');
+        draw();
+    }
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('#ysel')) gv('ysel').classList.remove('open');
+    });
+
+    function st() {
+        return {
+            rec: gv('kR').checked,
+            ped: gv('kP').checked,
+            yr: YEAR
+        };
+    }
+
+    function nz(mn, mx, s) {
+        var lo = Math.floor(mn / s) * s,
+            hi = Math.ceil(mx / s) * s;
+        if (hi <= lo) hi = lo + s;
+        return [lo, hi];
+    }
+
+    function draw() {
+        var s = st(),
+            d = D[s.yr];
+        if (!d) return;
+        var n = d.m.length;
+        var pb = nz(Math.min.apply(null, d.p), Math.max.apply(null, d.p), 20);
+        var rb = nz(Math.min.apply(null, d.r), Math.max.apply(null, d.r), 1000);
+        var slot = (GR - GL) / n;
+        var cx = function(i) {
+            return GL + slot * i + slot / 2;
+        };
+        var fp = function(v) {
+            return GB - ((v - pb[0]) / (pb[1] - pb[0])) * H;
+        };
+        var fr = function(v) {
+            return GB - ((v - rb[0]) / (rb[1] - rb[0])) * H;
+        };
+        C = {
+            d: d,
+            cx: cx,
+            fr: fr,
+            s: s,
+            yr: s.yr
+        };
+        var ax = '';
+        for (var k = 0; k < 5; k++) {
+            var yy = GB - (k / 4) * H;
+            ax += `<line x1='${GL}' y1='${yy}' x2='${GR}' y2='${yy}' stroke='#eef0f2' stroke-dasharray='2 4'/>`;
+            var rv = rb[0] + (k / 4) * (rb[1] - rb[0]),
+                pv = pb[0] + (k / 4) * (pb[1] - pb[0]);
+            ax += `<text x='60' y='${yy+4}' text-anchor='end' fill='#9ca3af' font-size='11'>R$ ${(rv/1000).toLocaleString('pt-BR')} mil</text>`;
+            ax += `<text x='610' y='${yy+4}' fill='#9ca3af' font-size='11'>${Math.round(pv)}</text>`;
+        }
+        for (var i = 0; i < n; i++) {
+            ax += `<text x='${cx(i)}' y='234' text-anchor='middle' fill='#9ca3af' font-size='11'>${L[d.m[i]]}</text>`;
+        }
+        gv('ax').innerHTML = ax;
+        var bw = Math.min(24, slot * 0.42),
+            bs = '';
+        if (s.ped) {
+            for (var i = 0; i < n; i++) {
+                var y = fp(d.p[i]);
+                bs += `<rect x='${cx(i)-bw/2}' y='${y}' width='${bw}' height='${GB-y}' rx='5' fill='#22c55e'/>`;
+            }
+        }
+        gv('bars').innerHTML = bs;
+        var ln = '';
+        if (s.rec) {
+            var pts = d.r.map(function(v, i) {
+                return cx(i) + ',' + fr(v);
+            }).join(' ');
+            ln = `<polyline fill='none' stroke='#166534' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round' points='${pts}'/>`;
+            for (var i = 0; i < n; i++) {
+                ln += `<circle cx='${cx(i)}' cy='${fr(d.r[i])}' r='4' fill='#fff' stroke='#166534' stroke-width='2'/>`;
+            }
+        }
+        gv('line').innerHTML = ln;
+        gv('hl').innerHTML = '';
+        var hit = '';
+        for (var i = 0; i < n; i++) {
+            hit += `<rect x='${GL+slot*i}' y='14' width='${slot}' height='196' fill='transparent' pointer-events='all' onmouseover='tShow(${i})' onmousemove='tMove(event)' onmouseout='tHide()'/>`;
+        }
+        gv('hit').innerHTML = hit;
+        gv('bR').textContent = s.rec ? '✓' : '';
+        gv('bR').className = 'ckbox' + (s.rec ? '' : ' off');
+        gv('bP').textContent = s.ped ? '✓' : '';
+        gv('bP').className = 'ckbox' + (s.ped ? '' : ' off');
+    }
+
+    function tShow(i) {
+        var d = C.d;
+        if (!d) return;
+        var x = C.cx(i);
+        var h = `<line x1='${x}' y1='14' x2='${x}' y2='210' stroke='#cbd5e1' stroke-width='1' stroke-dasharray='3 3'/>`;
+        if (C.s.rec) {
+            var cy = C.fr(d.r[i]);
+            h += `<circle cx='${x}' cy='${cy}' r='6' fill='#fff' stroke='#166534' stroke-width='2.5'/>`;
+        }
+        gv('hl').innerHTML = h;
+        gv('tip').innerHTML = `<div class='tm'>${MF[d.m[i]]} ${C.yr}</div><div class='tr'><span class='d' style='background:#22c55e'></span>Pedidos<b>${d.p[i].toLocaleString('pt-BR')}</b></div><div class='tr'><span class='d' style='background:#166534'></span>Receita<b>R$ ${d.r[i].toLocaleString('pt-BR')}</b></div>`;
+        gv('tip').style.display = 'block';
+    }
+
+    function tMove(e) {
+        var t = gv('tip'),
+            r = gv('wrap').getBoundingClientRect();
+        var x = e.clientX - r.left,
+            y = e.clientY - r.top,
+            tw = t.offsetWidth;
+        var nx = x + 14;
+        if (nx + tw > r.width) nx = x - tw - 14;
+        t.style.left = nx + 'px';
+        t.style.top = (y + 14) + 'px';
+    }
+
+    function tHide() {
+        gv('hl').innerHTML = '';
+        gv('tip').style.display = 'none';
+    }
+    draw();
+</script>

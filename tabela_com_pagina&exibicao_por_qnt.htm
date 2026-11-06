@@ -1,0 +1,467 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: default;
+        user-select: none;
+        -webkit-user-select: none;
+        caret-color: transparent
+    }
+
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+        background: transparent
+    }
+
+    .wrap {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 16px
+    }
+
+    .hdr {
+        padding: 12px 0 8px;
+        flex-shrink: 0
+    }
+
+    .hdr h2 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #18181b;
+        margin-bottom: 1px
+    }
+
+    .hdr p {
+        font-size: 10px;
+        color: #a1a1aa;
+        line-height: 1.3
+    }
+
+    .tbl-wrap {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        min-height: 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none
+    }
+
+    .tbl-wrap::-webkit-scrollbar {
+        display: none
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse
+    }
+
+    thead {
+        position: sticky;
+        top: 0;
+        z-index: 1
+    }
+
+    th {
+        font-size: 10px;
+        font-weight: 600;
+        color: #71717a;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        text-align: left;
+        padding: 6px 8px 5px;
+        border-bottom: 1.5px solid #e4e4e7;
+        background: #fff
+    }
+
+    th.r {
+        text-align: right
+    }
+
+    td {
+        font-size: 12px;
+        color: #18181b;
+        padding: 7px 8px;
+        border-bottom: 1px solid #f4f4f5;
+        white-space: nowrap;
+        vertical-align: middle
+    }
+
+    td.r {
+        text-align: right
+    }
+
+    .rk {
+        color: #a1a1aa;
+        font-weight: 500;
+        font-size: 11px;
+        width: 24px;
+        text-align: center
+    }
+
+    .nm {
+        font-weight: 500
+    }
+
+    .sp {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #52525b;
+        font-size: 11.5px
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        flex-shrink: 0
+    }
+
+    .eq {
+        color: #71717a;
+        font-size: 11.5px
+    }
+
+    .mono {
+        font-variant-numeric: tabular-nums;
+        font-weight: 500;
+        text-align: right
+    }
+
+    .cg {
+        color: #16a34a;
+        font-weight: 600
+    }
+
+    .cy {
+        color: #d97706;
+        font-weight: 600
+    }
+
+    .cr {
+        color: #dc2626;
+        font-weight: 600
+    }
+
+    tr:last-child td {
+        border-bottom: none
+    }
+
+    tr:hover td {
+        background: #faf9ff;
+        transition: background .15s ease
+    }
+
+    .foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0 4px;
+        border-top: 1px solid #f4f4f5;
+        flex-shrink: 0;
+        font-size: 11px;
+        color: #a1a1aa
+    }
+
+    .foot .info {
+        font-weight: 500
+    }
+
+    .pag {
+        display: flex;
+        align-items: center;
+        gap: 3px
+    }
+
+    .nb {
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: 500;
+        color: #71717a;
+        cursor: pointer;
+        border: 1px solid #e4e4e7;
+        background: #fff;
+        transition: all .15s
+    }
+
+    .nb:hover {
+        background: #f4f4f5
+    }
+
+    .na {
+        background: #18181b;
+        color: #fff;
+        border-color: #18181b
+    }
+
+    .na:hover {
+        background: #27272a
+    }
+
+    .pbtn {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        cursor: pointer;
+        border: 1px solid #e4e4e7;
+        background: #fff;
+        color: #71717a;
+        font-size: 12px;
+        transition: all .15s
+    }
+
+    .pbtn:hover {
+        background: #f4f4f5
+    }
+
+    .pnum {
+        font-size: 10px;
+        font-weight: 500;
+        color: #52525b;
+        padding: 0 4px
+    }
+</style>
+<div class='wrap'>
+    <div class='hdr'>
+        <h2>Ranking de Vendedores</h2>
+        <p>Ordenado por faturamento líquido · 12 vendedores</p>
+    </div>
+    <div class='tbl-wrap'>
+        <table>
+            <thead>
+                <tr>
+                    <th style='text-align:center;width:24px'>#</th>
+                    <th>Vendedor</th>
+                    <th>Supervisor</th>
+                    <th>Equipe</th>
+                    <th class='r'>Faturamento</th>
+                    <th class='r'>Vendas</th>
+                    <th class='r'>Margem %</th>
+                    <th class='r'>Ticket Médio</th>
+                    <th class='r'>Devol. %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class='rk'>1</td>
+                    <td class='nm'>Carla Ferreira</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#7c3aed'></span>Diego Araujo</div>
+                    </td>
+                    <td class='eq'>Varejo</td>
+                    <td class='mono'>R$ 1.154.796</td>
+                    <td class='mono'>4.196</td>
+                    <td class='mono cg'>40,8%</td>
+                    <td class='mono'>R$ 276,66</td>
+                    <td class='mono cg'>1,9%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>2</td>
+                    <td class='nm'>Julio Lima</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#3b82f6'></span>Diogo Carvalho</div>
+                    </td>
+                    <td class='eq'>Distribuidoras</td>
+                    <td class='mono'>R$ 838.080</td>
+                    <td class='mono'>4.335</td>
+                    <td class='mono cg'>41,4%</td>
+                    <td class='mono'>R$ 194,69</td>
+                    <td class='mono cg'>1,5%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>3</td>
+                    <td class='nm'>Gustavo Gomes</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#3b82f6'></span>Diogo Carvalho</div>
+                    </td>
+                    <td class='eq'>Distribuidoras</td>
+                    <td class='mono'>R$ 617.223</td>
+                    <td class='mono'>2.944</td>
+                    <td class='mono cg'>42,7%</td>
+                    <td class='mono'>R$ 210,60</td>
+                    <td class='mono cg'>1,4%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>4</td>
+                    <td class='nm'>Felipe Goncalves</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#16a34a'></span>Sofia Ribeiro</div>
+                    </td>
+                    <td class='eq'>Online</td>
+                    <td class='mono'>R$ 481.171</td>
+                    <td class='mono'>2.723</td>
+                    <td class='mono cg'>40,4%</td>
+                    <td class='mono'>R$ 178,15</td>
+                    <td class='mono cg'>1,9%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>5</td>
+                    <td class='nm'>Leonardo Cardoso</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#7c3aed'></span>Diego Araujo</div>
+                    </td>
+                    <td class='eq'>Varejo</td>
+                    <td class='mono'>R$ 442.266</td>
+                    <td class='mono'>2.553</td>
+                    <td class='mono cy'>37,3%</td>
+                    <td class='mono'>R$ 173,71</td>
+                    <td class='mono cg'>1,3%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>6</td>
+                    <td class='nm'>Gustavo Barros</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#7c3aed'></span>Emily Rocha</div>
+                    </td>
+                    <td class='eq'>Varejo</td>
+                    <td class='mono'>R$ 286.995</td>
+                    <td class='mono'>1.641</td>
+                    <td class='mono cy'>39,4%</td>
+                    <td class='mono'>R$ 175,17</td>
+                    <td class='mono cg'>0,7%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>7</td>
+                    <td class='nm'>Mateus Costa</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#16a34a'></span>Sofia Ribeiro</div>
+                    </td>
+                    <td class='eq'>Online</td>
+                    <td class='mono'>R$ 270.937</td>
+                    <td class='mono'>1.919</td>
+                    <td class='mono cy'>39,1%</td>
+                    <td class='mono'>R$ 141,68</td>
+                    <td class='mono cg'>1,1%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>8</td>
+                    <td class='nm'>Kaua Araujo</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#7c3aed'></span>Fernando Silva</div>
+                    </td>
+                    <td class='eq'>Varejo</td>
+                    <td class='mono'>R$ 262.144</td>
+                    <td class='mono'>1.194</td>
+                    <td class='mono cg'>55,5%</td>
+                    <td class='mono'>R$ 220,44</td>
+                    <td class='mono cg'>0,9%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>9</td>
+                    <td class='nm'>Julia Silva</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#16a34a'></span>Sofia Ribeiro</div>
+                    </td>
+                    <td class='eq'>Online</td>
+                    <td class='mono'>R$ 254.742</td>
+                    <td class='mono'>1.991</td>
+                    <td class='mono cg'>41,5%</td>
+                    <td class='mono'>R$ 128,22</td>
+                    <td class='mono cg'>0,7%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>10</td>
+                    <td class='nm'>Isabella Sousa</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#7c3aed'></span>Emily Rocha</div>
+                    </td>
+                    <td class='eq'>Varejo</td>
+                    <td class='mono'>R$ 161.082</td>
+                    <td class='mono'>533</td>
+                    <td class='mono cg'>41,2%</td>
+                    <td class='mono'>R$ 304,86</td>
+                    <td class='mono cg'>1,5%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>11</td>
+                    <td class='nm'>Estevan Souza</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#3b82f6'></span>Diogo Carvalho</div>
+                    </td>
+                    <td class='eq'>Distribuidoras</td>
+                    <td class='mono'>R$ 115.061</td>
+                    <td class='mono'>783</td>
+                    <td class='mono cy'>36,1%</td>
+                    <td class='mono'>R$ 147,72</td>
+                    <td class='mono cg'>1,4%</td>
+                </tr>
+                <tr>
+                    <td class='rk'>12</td>
+                    <td class='nm'>Julieta Gomes</td>
+                    <td>
+                        <div class='sp'><span class='dot' style='background:#7c3aed'></span>Emily Rocha</div>
+                    </td>
+                    <td class='eq'>Varejo</td>
+                    <td class='mono'>R$ 2.982</td>
+                    <td class='mono'>20</td>
+                    <td class='mono cg'>58,8%</td>
+                    <td class='mono'>R$ 149,09</td>
+                    <td class='mono cg'>0,0%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='foot'><span id='pi' class='info'></span>
+        <div class='pag'><span data-n='3' class='nb na'>3</span><span data-n='5' class='nb'>5</span><span data-n='10' class='nb'>10</span><span data-n='999' class='nb'>Todos</span><span style='width:6px'></span><span id='pb' class='pbtn'>‹</span><span id='pn' class='pnum'></span><span id='pf' class='pbtn'>›</span></div>
+    </div>
+</div>
+<script>
+    ;
+    (function() {
+        var R = document.querySelectorAll('tbody tr'),
+            T = R.length,
+            P = 0,
+            N = 3;
+
+        function U() {
+            var s = P * N,
+                e = Math.min(s + N, T),
+                pg = Math.ceil(T / N);
+            for (var i = 0; i < T; i++) R[i].style.display = (i >= s && i < e) ? '' : 'none';
+            var pi = document.getElementById('pi');
+            if (pi) pi.textContent = 'Mostrando ' + (s + 1) + '\u2013' + e + ' de ' + T;
+            var pn = document.getElementById('pn');
+            if (pn) pn.textContent = (P + 1) + ' / ' + pg;
+            var pb = document.getElementById('pb');
+            if (pb) pb.style.opacity = P > 0 ? 1 : .3;
+            var pf = document.getElementById('pf');
+            if (pf) pf.style.opacity = P < pg - 1 ? 1 : .3;
+        }
+        var bs = document.querySelectorAll('[data-n]');
+        for (var j = 0; j < bs.length; j++) {
+            (function(b) {
+                b.onclick = function() {
+                    N = +b.getAttribute('data-n') || T;
+                    P = 0;
+                    for (var k = 0; k < bs.length; k++) bs[k].className = 'nb';
+                    b.className = 'nb na';
+                    U()
+                };
+            })(bs[j]);
+        }
+        var pb = document.getElementById('pb');
+        if (pb) pb.onclick = function() {
+            if (P > 0) {
+                P--;
+                U();
+            }
+        };
+        var pf = document.getElementById('pf');
+        if (pf) pf.onclick = function() {
+            if (P < Math.ceil(T / N) - 1) {
+                P++;
+                U();
+            }
+        };
+        U();
+    })();
+</script>

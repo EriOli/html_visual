@@ -1,0 +1,94 @@
+<style>
+    .mb {
+        font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: #f0fdf4;
+        border: 1px solid #d1fadf;
+        border-radius: 14px;
+        padding: 14px 20px
+    }
+
+    .mb * {
+        box-sizing: border-box
+    }
+
+    .mb .lft {
+        display: flex;
+        align-items: center;
+        gap: 14px
+    }
+
+    .mb .chip {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        background: #bbf7d0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none
+    }
+
+    .mb .ttl {
+        color: #166534;
+        font-weight: 700;
+        font-size: 15px
+    }
+
+    .mb .sub {
+        color: #15803d;
+        font-weight: 400;
+        font-size: 12.5px;
+        margin-top: 2px
+    }
+
+    .mb .prog {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 7px;
+        min-width: 200px;
+        max-width: 280px;
+        flex: 1 1 280px
+    }
+
+    .mb .pct {
+        color: #166534;
+        font-weight: 600;
+        font-size: 13px
+    }
+
+    .mb .trk {
+        width: 100%;
+        height: 8px;
+        border-radius: 4px;
+        background: #bbf7d0;
+        overflow: hidden
+    }
+
+    .mb .fil {
+        height: 8px;
+        border-radius: 4px;
+        background: #16a34a
+    }
+</style>
+<div class='mb'>
+    <div class='lft'><span class='chip'><svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='#16a34a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+                <circle cx='12' cy='12' r='9' />
+                <circle cx='12' cy='12' r='5' />
+                <circle cx='12' cy='12' r='1.6' fill='#16a34a' stroke='none' />
+            </svg></span>
+        <div>
+            <div class='ttl'>Meta de Vendas 2025</div>
+            <div class='sub'>R$ 53.634 de R$ 80.000 · faltam R$ 26.366</div>
+        </div>
+    </div>
+    <div class='prog'><span class='pct'>67% da meta</span>
+        <div class='trk'>
+            <div class='fil' style='width:67%'></div>
+        </div>
+    </div>
+</div>
